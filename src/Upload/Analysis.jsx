@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -12,9 +13,18 @@ function Analysis() {
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };
+  const [showErrorPopup, setShowErrorPopup] = useState(false);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png'];
+
+    if (file && !allowedTypes.includes(file.type)) {
+      setShowErrorPopup(true);
+      e.target.value = null;
+      return;
+    }
+
     if (file) {
       console.log('File yang diunggah:', file.name);
       navigate('/loading', { state: { file: file } });
@@ -149,6 +159,20 @@ function Analysis() {
       </section>
 
       <Footer />
+      {showErrorPopup && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+          <div
+            className="bg-white px-8 py-6 rounded-xl shadow-2xl text-center w-[90vw] max-w-md border-2 border-red-500
+      animate-popupAppear"
+          >
+            <h2 className="text-2xl font-bold mb-3 text-red-600">File Tidak Didukung</h2>
+            <p className="text-gray-700 text-base mb-5">Hanya file JPG atau PNG yang diperbolehkan.</p>
+            <button className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 text-base font-semibold" onClick={() => setShowErrorPopup(false)}>
+              OK
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

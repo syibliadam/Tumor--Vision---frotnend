@@ -47,6 +47,22 @@ function Result() {
       <section className="bg-[#1D1D1D] mt-16 px-4 md:px-16 py-10 rounded-lg mx-4 md:mx-24">
         <h2 className="text-3xl md:text-4xl text-[#E5A00D] text-center font-bold mb-4">Hasil Diagnosis</h2>
         <h3 className="text-[#939393] text-sm text-center mb-10">Berikut hasil analisis AI berdasarkan gambar yang anda unggah</h3>
+        {/* Gambar Asli & Grad-CAM Side by Side */}
+        {prediction?.image_url && prediction?.gradcam && (
+          <div className="flex flex-col lg:flex-row justify-center items-center gap-8 my-8">
+            {/* Gambar Asli */}
+            <div className="flex flex-col items-center">
+              <h4 className="text-white text-sm mb-2">Gambar Asli</h4>
+              <img src={prediction.image_url} alt="Gambar Asli" className="w-64 h-64 object-cover rounded-md border border-gray-500" />
+            </div>
+
+            {/* Grad-CAM */}
+            <div className="flex flex-col items-center">
+              <h4 className="text-white text-sm mb-2">Grad-CAM Overlay</h4>
+              <img src={`data:image/jpeg;base64,${prediction.gradcam}`} alt="Grad-CAM" className="w-64 h-64 object-cover rounded-md border border-yellow-500" />
+            </div>
+          </div>
+        )}
 
         <div className="flex flex-col lg:flex-row w-full mx-auto items-center bg-[#2B2B2B] rounded-lg p-4 md:p-8 space-y-6 lg:space-y-0 lg:space-x-8">
           <img src={gradcamImage || predictedData.image} alt="Hasil Diagnosis" className="w-64 h-64 object-cover rounded-md border border-gray-500" />
@@ -128,7 +144,7 @@ function Result() {
         </div>
         <div className="w-full lg:w-1/2 space-y-4">
           <div className="bg-[#FFF3F0] text-[#FF7B54] w-fit p-1 rounded-md">STEP 2 </div>
-          <h2 className="text-[#969694] text-3xl md:text-5xl font-semibold">Bersantai! Biarkan sistem kami bekerja untuk anda</h2>
+          <h2 className="text-c[#969694] text-3xl md:text-5xl font-semibold">Bersantai! Biarkan sistem kami bekerja untuk anda</h2>
           <p className="text-[#6D706F] text-base md:text-lg">AI kami akan bekerja secara cepat dan efisien untuk mendiagnosa penyakit Anda.</p>
         </div>
       </section>

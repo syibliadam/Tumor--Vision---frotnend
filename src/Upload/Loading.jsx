@@ -118,7 +118,7 @@ function Loading() {
               <div className="absolute inset-0 flex items-center justify-center text-[#E5A00D] text-sm font-semibold">22%</div>
             </div>
             <div className="text-center space-y-1">
-              <h2 className="text-white text-2xl font-bold">Mohon bersabar</h2>
+              <h2 className="text-white text-2xl font-bold">Mohon Tunggu</h2>
               <p className="text-gray-400 text-sm">Foto anda sedang diproses oleh AI kami</p>
             </div>
           </div>

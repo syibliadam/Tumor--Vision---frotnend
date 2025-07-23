@@ -66,13 +66,14 @@ function History() {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ timestamp: new Date(timestamp).toISOString().split('.')[0] }),
+        body: JSON.stringify({ timestamp }),
       });
 
       if (res.ok) {
-        setHistory((prev) => prev.filter((item) => item.timestamp !== timestamp));
+        await fetchHistory(); // ⬅️ force refresh state dari DB
       } else {
-        console.error('Gagal hapus dari backend');
+        const error = await res.json();
+        console.error('Gagal hapus dari backend:', error.message);
       }
     } catch (err) {
       console.error('Gagal menghapus:', err);
@@ -167,7 +168,7 @@ function History() {
                   <td className="px-4 py-2">{new Date(item.timestamp).toLocaleString()}</td>
                   <td className="px-4 py-2">{item.filename || '-'}</td>
                   <td className="px-4 py-2">
-                    <button onClick={() => handleDelete(item.timestamp)} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm">
+                    <button onClick={() => handleDelete(new Date(item.timestamp).toISOString().split('.')[0])} className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-sm cursor-pointer">
                       Hapus
                     </button>
                   </td>

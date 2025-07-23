@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import logo from '../assets/logo.png';
 import { jwtDecode } from 'jwt-decode';
 import { FiMenu, FiX } from 'react-icons/fi';
 
@@ -32,7 +31,8 @@ function NavbarComponent() {
       <div className="flex items-center justify-between px-4 md:px-12 py-4">
         {/* Logo */}
         <div className="flex items-center space-x-3">
-          <img src={logo} alt="Logo TumorVision" className="w-10 h-10 object-contain" />
+          <img src="/logo.png" alt="Logo TumorVision" className="w-10 h-10 object-contain" />
+
           <h1 className="text-[#969694] font-bold font-poppins text-base sm:text-lg">Tumor Vision</h1>
         </div>
 
@@ -46,9 +46,10 @@ function NavbarComponent() {
           <Link to="/home" className="hover:underline">
             Home
           </Link>
-          <Link to="/analysis" className="hover:underline">
+          <Link to={token ? '/analysis' : '/login'} className="block" onClick={() => setMenuOpen(false)}>
             Analysis
           </Link>
+
           {/* <Link to="/segmentation" className="hover:underline">
             Segmentation
           </Link> */}

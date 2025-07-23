@@ -1,66 +1,67 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaInstagram, FaLinkedin, FaGithub, FaYoutube } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="mt-24 bg-[#1e1e1e] py-12 text-gray-400 px-8">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between space-y-8 md:space-y-0">
-        
-        {/* Brand Info */}
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl font-bold text-white">TumorVision</h2>
-          <p className="max-w-xs text-sm leading-relaxed">
-            TumorVision membantu dalam mendeteksi jenis tumor otak
-            menggunakan teknologi AI canggih untuk mendukung diagnosis medis.
-          </p>
-          <div className="flex space-x-4 mt-2">
-            <a href="#" className="hover:text-[#E5A00D]">LinkedIn</a>
-            <a href="#" className="hover:text-[#E5A00D]">Instagram</a>
-            <a href="#" className="hover:text-[#E5A00D]">Twitter</a>
-          </div>
-          
-        </div>
-
-        {/* Sitemap */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-white font-bold mb-2">Sitemap</h3>
-          <Link to="/" className="hover:text-[#E5A00D]">Beranda</Link>
-          <Link to="/fitur" className="hover:text-[#E5A00D]">Fitur</Link>
-          <Link to="/informasi" className="hover:text-[#E5A00D]">Informasi</Link>
-          <Link to="/kontak" className="hover:text-[#E5A00D]">Kontak</Link>
-        </div>
-
-        {/* Company */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-white font-bold mb-2">Company</h3>
-          <Link to="/teams" className="hover:text-[#E5A00D]">Teams</Link>
-          <Link to="/karir" className="hover:text-[#E5A00D]">Karir</Link>
-          <Link to="/bantuan" className="hover:text-[#E5A00D]">Bantuan</Link>
-        </div>
-
-        {/* Resources */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-white font-bold mb-2">Resources</h3>
-          <a href="#" className="hover:text-[#E5A00D]">Marketplace</a>
-          <a href="#" className="hover:text-[#E5A00D]">Subscriptions</a>
-          <a href="#" className="hover:text-[#E5A00D]">Testimonials</a>
-        </div>
-
-        {/* Newsletter */}
-        <div className="flex flex-col space-y-2">
-          <h3 className="text-white font-bold mb-2">Keep in touch</h3>
-          <p className="text-sm">Never miss any news from us, subscribe now</p>
-          <div className="flex items-center space-x-2 mt-2">
-            <input type="email" placeholder="Your email" className="p-2 rounded-md text-black text-sm" />
-            <button className="bg-[#E5A00D] hover:bg-yellow-400 text-white p-2 rounded-md text-sm">➤</button>
+    <footer className="bg-[#0f0f0f] text-white px-8 py-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Social Media Icons */}
+        <div className="flex justify-between items-center mb-8">
+          <h3 className="font-bold text-lg">Follow us</h3>
+          <div className="flex space-x-4 text-xl">
+            <FaInstagram className="hover:text-pink-400 cursor-pointer" />
+            <FaLinkedin className="hover:text-blue-400 cursor-pointer" />
+            <FaGithub className="hover:text-gray-300 cursor-pointer" />
+            <FaYoutube className="hover:text-red-500 cursor-pointer" />
           </div>
         </div>
 
-      </div>
-      
-      <div className="mt-12 border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center text-xs">
-        <p>© 2025 TumorVision All rights reserved.</p>
-        <p>12,290,526 tumor scan cepat dan akurat</p>
+        <hr className="border-gray-700 mb-8" />
+
+        {/* Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {/* About */}
+          <div>
+            <h4 className="text-white font-semibold mb-2">About</h4>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>MRICONDYLENET</li>
+              <li>PRIMA</li>
+              <li>SENUSA</li>
+              <li>ASHOKA</li>
+              <li>DENTALEDU</li>
+              <li>VEUME</li>
+            </ul>
+          </div>
+
+          {/* Product */}
+          <div>
+            <h4 className="text-white font-semibold mb-2">Product</h4>
+            <ul className="space-y-1 text-sm text-gray-300">
+              <li>MRICONDYLENET</li>
+              <li>PRIMA</li>
+              <li>SENUSA</li>
+              <li>ASHOKA</li>
+              <li>DENTALEDU</li>
+              <li>VEUME</li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="lg:col-span-2">
+            <h4 className="font-semibold text-white mb-2">Sign up for updates on our latest innovations</h4>
+            <input type="email" placeholder="Email address" className="w-full p-3 rounded text-black text-sm mb-2" />
+            <p className="text-xs text-gray-400 mb-4">I accept Google’s Terms and acknowledge info will be used under Privacy Policy.</p>
+            <Link to="/login" className="block text-center border border-yellow-400 rounded py-2 text-sm text-white hover:bg-yellow-400 hover:text-black transition">
+              SIGN UP
+            </Link>
+          </div>
+        </div>
+
+        <hr className="border-gray-700 mt-12 mb-4" />
+
+        {/* Copyright */}
+        <div className="text-center text-xs text-gray-500">© MRICondyleNet Dev 2025 Inc. All rights reserved.</div>
       </div>
     </footer>
   );
